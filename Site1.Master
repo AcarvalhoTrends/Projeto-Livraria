@@ -1,0 +1,54 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="ProjetoLivrariaTrends.Site1" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="UTF-8" />
+    <title>SAGRES Livraria</title>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
+    <%-- 
+       ALTERAÇÃO PRINCIPAL: 
+Adicionado para evitar problemas na minhas pagina de carregamento com ID="head".
+       É aqui que a página filha vai injetar o Javascript sem quebrar o layout.
+    --%>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="content-wrapper">
+            <div class="header">
+                <h1>SAGRES Livraria</h1>
+                <dx:ASPxMenu ID="HeaderMenu" runat="server" ItemAutoWidth="False" Width="100%">
+                    <items>
+                        <%-- DICA: É mais seguro colocar a extensão .aspx no link --%>
+                        <dx:MenuItem Text="Gerenciamento de Autores" NavigateUrl="~/Livraria/GerenciamentoAutores.aspx" />
+                        <dx:MenuItem Text="Gerenciamento de Editores" NavigateUrl="~/Livraria/GerenciadorEditores.aspx" />
+                        <dx:MenuItem Text="Gerenciamento de Livros" NavigateUrl="~/Livraria/GerenciadorLivro.aspx" />
+                        <dx:MenuItem Text="Gerenciamento de categoria" NavigateUrl="~/Livraria/GerenciadorCategoria.aspx" />
+
+                      
+                    </items>
+                    <border borderwidth="0px" />
+                    <paddings padding="0px" />
+                </dx:ASPxMenu>
+            </div>
+
+            <div class="content">
+                <%-- 
+                   Este é o ID="MainContent". 
+                   A página filha vai procurar exatamente por esse nome para colocar o formulário.
+                --%>
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+
+            <div class="footer">
+                <p>&copy; <%: DateTime.Now.Year %> - DevExpress projeto livraria</p>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
